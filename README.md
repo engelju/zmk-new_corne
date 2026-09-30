@@ -1,6 +1,3 @@
-- [Chinese](README.md)
-- [English](README_EN.md)
-
 # 睫毛外设 (Eyelash Peripherals) Corne ZMK Repository
 
 **This keyboard is not the same as [foostan's Corne](https://github.com/foostan/crkbd). It will not work with standard `corne` firmware.**
