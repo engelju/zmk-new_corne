@@ -4,6 +4,7 @@
  * Die weggefallenen Aussenspalten wurden so verteilt:
  *   Shift / Ctrl  -> Hold auf A bzw. Z (Tap = Buchstabe, Halten = Modifier)
  *   Shift rechts  -> Hold auf ;
+ *   Ctrl rechts   -> Hold auf /
  *   Tab           -> Combo Q + W
  *   Backspace     -> Combo U + I
  *   Delete        -> Combo I + O (zusätzlich auf Lower rechts aussen)
@@ -94,7 +95,7 @@
             bindings = <
 &none  &kp Q        &kp W  &kp E  &kp R  &kp T                              &mmv MOVE_UP                     &kp Y  &kp U  &kp I      &kp O    &kp P     &none
 &none  &hm LSHFT A  &kp S  &kp D  &kp F  &kp G                &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &kp H  &kp J  &kp K      &kp L    &hm RSHFT SEMI  &none
-&none  &hm LCTRL Z  &kp X  &kp C  &kp V  &kp B  &kp C_MUTE                  &mmv MOVE_DOWN                   &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &none
+&none  &hm LCTRL Z  &kp X  &kp C  &kp V  &kp B  &kp C_MUTE                  &mmv MOVE_DOWN                   &kp N  &kp M  &kp COMMA  &kp DOT  &hm RCTRL FSLH  &none
                     &mo LOWER  &kp LGUI  &kp LALT                                                            &kp ESC  &kp SPACE  &mo RAISE
             >;
 
