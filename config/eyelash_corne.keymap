@@ -9,7 +9,8 @@
  *   Backspace     -> Combo U + I
  *   Delete        -> Combo I + O (zusätzlich auf Lower rechts aussen)
  *   Enter         -> Combo J + K
- *   '             -> Combo . + /
+ *   ' / "         -> Combo . + / oder Raise auf F, " zusätzlich Raise auf D
+ *   Shift auf Raise -> A
  *   Tilde         -> Raise, links unten
  *   Bootloader    -> Adjust, unten innen (je Hälfte eine Taste)
  *   Neu: Bluetooth-Tasten und &studio_unlock auf Adjust
@@ -119,8 +120,8 @@
             display-name = "Raise";
             bindings = <
 &none  &kp EXCL   &kp AT    &kp HASH   &kp DOLLAR  &kp PRCNT                      &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &none
-&none  &kp LEFT   &kp UP    &kp RIGHT  &none       &none           &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &none
-&none  &kp LCTRL  &kp DOWN  &kp GRAVE  &kp BSLH    &kp TILDE  &kp C_MUTE              &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &none
+&none  &kp LSHFT  &none     &kp DQT    &kp SQT     &none           &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &none
+&none  &kp LCTRL  &none     &kp GRAVE  &kp BSLH    &kp TILDE  &kp C_MUTE              &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &none
                             &trans  &kp LALT  &kp LGUI                                                                 &kp RALT  &kp RGUI  &trans
             >;
 
