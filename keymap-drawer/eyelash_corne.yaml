@@ -49,6 +49,55 @@ layers:
   - $$mdi:keyboard-esc$$
   - $$mdi:keyboard-space$$
   - Raise
+  STD:
+  - {t: '$$mdi:transfer$$', type: trans}
+  - Q
+  - W
+  - P
+  - F
+  - G
+  - {t: '$$mdi:transfer$$', type: trans}
+  - Y
+  - L
+  - O
+  - J
+  - {t: ;, s: ':'}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: A, h: '$$mdi:apple-keyboard-shift$$'}
+  - R
+  - S
+  - T
+  - D
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - H
+  - N
+  - E
+  - I
+  - {t: U, h: '$$mdi:apple-keyboard-shift$$'}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: Z, h: '$$mdi:apple-keyboard-control$$'}
+  - X
+  - B
+  - C
+  - V
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - K
+  - M
+  - {t: ',', s: <}
+  - {t: ., s: '>'}
+  - {t: /, h: '$$mdi:apple-keyboard-control$$', s: '?'}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   Lower:
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '1', s: '!'}
@@ -166,7 +215,7 @@ layers:
   - RGB HUI
   - RGB SAI
   - RGB BRI
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - {t: STD, h: toggle}
   - {t: '$$mdi:menu-left$$', s: '$$mdi:mouse$$'}
   - $$mdi:mouse-left-click-outline$$
   - {t: '$$mdi:menu-right$$', s: '$$mdi:mouse$$'}
