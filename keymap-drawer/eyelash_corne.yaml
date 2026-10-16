@@ -138,7 +138,7 @@ layers:
   - {t: '-', s: _}
   - '{'
   - '}'
-  - {t: '$$mdi:minus-circle-outline$$', type: none}
+  - _
   - '|'
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
