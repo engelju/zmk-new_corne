@@ -14,6 +14,8 @@
  *   Tilde         -> Raise, links unten und auf L
  *   Bootloader    -> Adjust, unten innen (je Hälfte eine Taste)
  *   Neu: Bluetooth-Tasten und &studio_unlock auf Adjust
+ *   STD-Layout  -> Adjust + G schaltet ein, nochmals Adjust + G zurück zu QWERTY.
+ *                  Nur die Buchstaben wechseln, Mods/Combos bleiben auf ihren Positionen.
  *
  * Die Aussenspalten sind auf &none gesetzt. Joystick (5-Wege), Encoder
  * und Soft-Off-Combo sind aus der ursprünglichen Keymap übernommen.
@@ -39,9 +41,10 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define BASE   0
-#define LOWER  1
-#define RAISE  2
-#define ADJUST 3
+#define STD    1
+#define LOWER  2
+#define RAISE  3
+#define ADJUST 4
 
 &soft_off { hold-time-ms = <2000>; };
 
@@ -104,6 +107,18 @@
             sensor-bindings = <&rsr_vol>;
         };
 
+        std_layer {
+            display-name = "STD";
+            bindings = <
+&trans  &kp Q        &kp W  &kp P  &kp F  &kp G                              &trans                           &kp Y  &kp L  &kp O      &kp J    &kp SEMI        &trans
+&trans  &hm LSHFT A  &kp R  &kp S  &kp T  &kp D                &trans          &trans        &trans           &kp H  &kp N  &kp E      &kp I    &hm RSHFT U     &trans
+&trans  &hm LCTRL Z  &kp X  &kp B  &kp C  &kp V  &trans                      &trans                           &kp K  &kp M  &kp COMMA  &kp DOT  &hm RCTRL FSLH  &trans
+                    &trans  &trans  &trans                                                                  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&rsr_vol>;
+        };
+
         lower_layer {
             display-name = "Lower";
             bindings = <
@@ -132,7 +147,7 @@
             display-name = "Adjust";
             bindings = <
 &none  &kp F1           &kp F2           &kp F3           &kp F4           &kp F5                                 &mmv MOVE_UP                     &kp F6        &kp F7        &kp F8        &kp F9      &kp F10         &none
-&none  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &none                  &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &none         &kp F11       &kp F12       &none       &studio_unlock  &none
+&none  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &tog STD               &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &none         &kp F11       &kp F12       &none       &studio_unlock  &none
 &none  &rgb_ug RGB_EFF  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &bootloader  &kp C_MUTE              &mmv MOVE_DOWN                   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR  &bootloader     &none
                                    &trans  &none  &none                                                                                               &none  &none  &trans
             >;
