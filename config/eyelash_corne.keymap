@@ -156,7 +156,7 @@
             display-name = "Colemak";
             bindings = <
 &trans  &kp Q        &kp W  &kp F  &kp P  &kp G                              &trans                           &kp J  &kp L  &kp U      &kp Y    &kp SEMI        &trans
-&trans  &hm LSHFT A  &kp R  &kp S  &kp T  &kp D                &trans          &trans        &trans           &kp H  &kp N  &kp E      &kp I    &hm RSHFT O     &trans
+&trans  &hs LSHFT A  &kp R  &kp S  &kp T  &kp D                &trans          &trans        &trans           &kp H  &kp N  &kp E      &kp I    &hs RSHFT O     &trans
 &trans  &hm LCTRL Z  &kp X  &kp C  &kp V  &kp B  &trans                      &trans                           &kp K  &kp M  &kp COMMA  &kp DOT  &hm RCTRL FSLH  &trans
                     &trans  &trans  &trans                                                                  &trans  &trans  &trans
             >;
