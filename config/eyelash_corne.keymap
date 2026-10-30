@@ -136,7 +136,7 @@
             bindings = <
 &none  &kp EXCL   &kp AT    &kp HASH   &kp DOLLAR  &kp PRCNT                      &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &none
 &none  &kp LSHFT  &none     &kp SQT    &kp DQT     &none           &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp TILDE &none
-&none  &kp LCTRL  &none     &kp BSLH   &kp GRAVE   &kp TILDE  &kp C_MUTE              &mmv MOVE_DOWN                   &kp MINUS  &kp LBRC   &kp RBRC  &kp BSLH  &kp PIPE  &none
+&none  &kp LCTRL  &none     &kp BSLH   &kp GRAVE   &kp TILDE  &kp C_MUTE              &mmv MOVE_DOWN                   &kp BSLH   &kp GRAVE  &kp LBRC  &kp RBRC  &kp PIPE  &none
                             &trans  &kp LALT  &kp LGUI                                                                 &kp RALT  &kp RGUI  &trans
             >;
 
