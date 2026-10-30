@@ -14,10 +14,9 @@
  *   Tilde         -> Raise, links unten und auf ;
  *   Bootloader    -> Adjust, unten innen (je Hälfte eine Taste)
  *   Neu: Bluetooth-Tasten und &studio_unlock auf Adjust
- *   Layouts     -> Adjust + G schaltet reihum QWERTY -> STD -> Colemak -> QWERTY.
- *                  Nur die Buchstaben wechseln, Mods/Combos bleiben auf ihren Positionen.
- *                  "Adjust STD" und "Adjust Colemak" sind Hilfsebenen, die nur G
- *                  überschreiben, damit die Taste den nächsten Schritt kennt.
+ *   Layouts     -> Adjust + G schaltet STD ein/aus, Adjust + H schaltet Colemak ein/aus.
+ *                  Sind beide an, gewinnt Colemak. Nur die Buchstaben wechseln,
+ *                  Mods/Combos bleiben auf ihren Positionen.
  *
  * Die Aussenspalten sind auf &none gesetzt. Joystick (5-Wege), Encoder
  * und Soft-Off-Combo sind aus der ursprünglichen Keymap übernommen.
@@ -48,8 +47,6 @@
 #define LOWER       3
 #define RAISE       4
 #define ADJUST      5
-#define ADJ_STD     6
-#define ADJ_COLEMAK 7
 
 &soft_off { hold-time-ms = <2000>; };
 
@@ -84,14 +81,6 @@
             cw-binding = <&kp C_VOL_UP>;
             ccw-binding = <&kp C_VOL_DN>;
         };
-
-        std_to_colemak: std_to_colemak {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&tog STD &tog COLEMAK>;
-        };
     };
 
     combos {
@@ -114,14 +103,6 @@
         tri_layer {
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
-        };
-        adjust_std {
-            if-layers = <LOWER RAISE STD>;
-            then-layer = <ADJ_STD>;
-        };
-        adjust_colemak {
-            if-layers = <LOWER RAISE COLEMAK>;
-            then-layer = <ADJ_COLEMAK>;
         };
     };
 
@@ -192,32 +173,12 @@
             display-name = "Adjust";
             bindings = <
 &none  &kp F1           &kp F2           &kp F3           &kp F4           &kp F5                                 &mmv MOVE_UP                     &kp F6        &kp F7        &kp F8        &kp F9      &kp F10         &none
-&none  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &tog STD               &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &none         &kp F11       &kp F12       &none       &studio_unlock  &none
+&none  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &tog STD               &mmv MOVE_LEFT  &mkp LCLK     &mmv MOVE_RIGHT  &tog COLEMAK  &kp F11       &kp F12       &none       &studio_unlock  &none
 &none  &rgb_ug RGB_EFF  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &bootloader  &kp C_MUTE              &mmv MOVE_DOWN                   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_CLR  &bootloader     &none
                                    &trans  &none  &none                                                                                               &none  &none  &trans
             >;
 
             sensor-bindings = <&rsr_vol>;
-        };
-
-        adjust_std_layer {
-            display-name = "Adjust STD";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                              &trans                           &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &std_to_colemak        &trans          &trans        &trans           &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                      &trans                           &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                                                              &trans  &trans  &trans
-            >;
-        };
-
-        adjust_colemak_layer {
-            display-name = "Adjust Colemak";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                              &trans                           &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &tog COLEMAK           &trans          &trans        &trans           &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                      &trans                           &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                                                              &trans  &trans  &trans
-            >;
         };
     };
 };
