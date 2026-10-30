@@ -14,8 +14,10 @@
  *   Tilde         -> Raise, links unten und auf ;
  *   Bootloader    -> Adjust, unten innen (je Hälfte eine Taste)
  *   Neu: Bluetooth-Tasten und &studio_unlock auf Adjust
- *   STD-Layout  -> Adjust + G schaltet ein, nochmals Adjust + G zurück zu QWERTY.
+ *   Layouts     -> Adjust + G schaltet reihum QWERTY -> STD -> Colemak -> QWERTY.
  *                  Nur die Buchstaben wechseln, Mods/Combos bleiben auf ihren Positionen.
+ *                  "Adjust STD" und "Adjust Colemak" sind Hilfsebenen, die nur G
+ *                  überschreiben, damit die Taste den nächsten Schritt kennt.
  *
  * Die Aussenspalten sind auf &none gesetzt. Joystick (5-Wege), Encoder
  * und Soft-Off-Combo sind aus der ursprünglichen Keymap übernommen.
@@ -40,11 +42,14 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
-#define BASE   0
-#define STD    1
-#define LOWER  2
-#define RAISE  3
-#define ADJUST 4
+#define BASE        0
+#define STD         1
+#define COLEMAK     2
+#define LOWER       3
+#define RAISE       4
+#define ADJUST      5
+#define ADJ_STD     6
+#define ADJ_COLEMAK 7
 
 &soft_off { hold-time-ms = <2000>; };
 
@@ -79,6 +84,14 @@
             cw-binding = <&kp C_VOL_UP>;
             ccw-binding = <&kp C_VOL_DN>;
         };
+
+        std_to_colemak: std_to_colemak {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&tog STD &tog COLEMAK>;
+        };
     };
 
     combos {
@@ -101,6 +114,14 @@
         tri_layer {
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
+        };
+        adjust_std {
+            if-layers = <LOWER RAISE STD>;
+            then-layer = <ADJ_STD>;
+        };
+        adjust_colemak {
+            if-layers = <LOWER RAISE COLEMAK>;
+            then-layer = <ADJ_COLEMAK>;
         };
     };
 
@@ -125,6 +146,18 @@
 &trans  &kp Q        &kp W  &kp P  &kp F  &kp G                              &trans                           &kp Y  &kp L  &kp O      &kp J    &kp SEMI        &trans
 &trans  &hs LSHFT A  &kp R  &kp S  &kp T  &kp D                &trans          &trans        &trans           &kp H  &kp N  &kp E      &kp I    &hs RSHFT U     &trans
 &trans  &hm LCTRL Z  &kp X  &kp B  &kp C  &kp V  &trans                      &trans                           &kp K  &kp M  &kp COMMA  &kp DOT  &hm RCTRL FSLH  &trans
+                    &trans  &trans  &trans                                                                  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&rsr_vol>;
+        };
+
+        colemak_layer {
+            display-name = "Colemak";
+            bindings = <
+&trans  &kp Q        &kp W  &kp F  &kp P  &kp G                              &trans                           &kp J  &kp L  &kp U      &kp Y    &kp SEMI        &trans
+&trans  &hm LSHFT A  &kp R  &kp S  &kp T  &kp D                &trans          &trans        &trans           &kp H  &kp N  &kp E      &kp I    &hm RSHFT O     &trans
+&trans  &hm LCTRL Z  &kp X  &kp C  &kp V  &kp B  &trans                      &trans                           &kp K  &kp M  &kp COMMA  &kp DOT  &hm RCTRL FSLH  &trans
                     &trans  &trans  &trans                                                                  &trans  &trans  &trans
             >;
 
@@ -165,6 +198,26 @@
             >;
 
             sensor-bindings = <&rsr_vol>;
+        };
+
+        adjust_std_layer {
+            display-name = "Adjust STD";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                              &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &std_to_colemak        &trans          &trans        &trans           &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                      &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans                                                              &trans  &trans  &trans
+            >;
+        };
+
+        adjust_colemak_layer {
+            display-name = "Adjust Colemak";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                              &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &tog COLEMAK           &trans          &trans        &trans           &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                      &trans                           &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans                                                              &trans  &trans  &trans
+            >;
         };
     };
 };
